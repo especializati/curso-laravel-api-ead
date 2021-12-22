@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SupportResource extends JsonResource
+class ReplySupportResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,13 +15,9 @@ class SupportResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'status' => $this->status,
-            'status_label' => $this->statusOptions[$this->status] ?? 'Not Found Status',
             'description' => $this->description,
+            'support' => new SupportResource($this->support),
             'user' => new UserResource($this->user),
-            'lesson' => new LessonResource($this->lesson),
-            'replies' => LessonResource::collection($this->replies),
         ];
     }
 }
