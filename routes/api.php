@@ -17,6 +17,7 @@ Route::get('/courses/{id}/modules', [ModuleController::class, 'index']);
 Route::get('/modules/{id}/lessons', [LessonController::class, 'index']);
 Route::get('/lessons/{id}', [LessonController::class, 'show']);
 
+Route::get('/my-supports', [SupportController::class, 'mySupports']);
 Route::get('/supports', [SupportController::class, 'index']);
 Route::post('/supports', [SupportController::class, 'store']);
 
