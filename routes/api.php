@@ -7,12 +7,24 @@ use App\Http\Controllers\Api\{
     ReplySupportController,
     SupportController
 };
-use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Auth\{
+    AuthController,
+    ResetPasswordController
+};
 use Illuminate\Support\Facades\Route;
 
+/**
+ * Auth
+ */
 Route::post('/auth', [AuthController::class, 'auth']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
+
+/**
+ * Reset Password
+ */
+Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->middleware('guest');
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/courses', [CourseController::class, 'index']);
