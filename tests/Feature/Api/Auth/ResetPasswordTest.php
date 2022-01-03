@@ -15,7 +15,7 @@ class ResetPasswordTest extends TestCase
 
     public function test_error_reset_password()
     {
-        $response = $this->postJson('/password/reset');
+        $response = $this->postJson('/forgot-password');
         $response->assertStatus(422);
     }
 
@@ -24,7 +24,7 @@ class ResetPasswordTest extends TestCase
         Notification::fake();
 
         $user = $this->createUser();
-        $response = $this->postJson('/password/reset', [
+        $response = $this->postJson('/forgot-password', [
             'email' => $user->email,
         ]);
         $response->assertStatus(200);
@@ -38,12 +38,12 @@ class ResetPasswordTest extends TestCase
 
         $user = $this->createUser();
         
-        $this->postJson('/password/reset', [
+        $this->postJson('/forgot-password', [
             'email' => $user->email,
         ]);
 
         Notification::assertSentTo($user, ResetPasswordNotification::class, function ($notification) use ($user) {
-            $response = $this->postJson('/password/reset', [
+            $response = $this->postJson('/reset-password', [
                 'token' => $notification->token,
                 'email' => $user->email,
                 'password' => 'password',
