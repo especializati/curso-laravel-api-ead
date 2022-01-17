@@ -1,30 +1,22 @@
 
-# Setup Docker Para Projetos Laravel
-[Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
+# Curso Laravel API EAD
+[Acessar o Curso](https://academy.especializati.com.br/curso/criando-plataforma-ead-com-laravel)
+
+## Subir a API
+Para testar o projeto, siga os passos descritos abaixo
 
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone https://github.com/especializati/setup-docker-laravel.git my-project
-cd my-project/
+git clone https://github.com/especializati/curso-laravel-api-ead.git
 ```
 
-
-Alterne para a branch laravel 8.x
 ```sh
-git checkout laravel-8
+cd curso-laravel-api-ead
 ```
-
-
-Remova o versionamento
-```sh
-rm -rf .git/
-```
-
 
 Crie o Arquivo .env
 ```sh
-cd example-project/
 cp .env.example .env
 ```
 
@@ -57,7 +49,7 @@ docker-compose up -d
 ```
 
 
-Acessar o container
+Acessar o container do projeto
 ```sh
 docker-compose exec laravel_8 bash
 ```
